@@ -1,29 +1,14 @@
 // Get references to page elements
-<<<<<<< HEAD
+
 var $jobsTitle = $("#job_title");
 var $jobsCompany = $("#job_company");
 var $jobDescription = $("#job_description");
 var $jobsList = $("#jobs_list");
-=======
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
->>>>>>> 8eb902a335583666a74797de242016becdd48411
 
 // The API object contains methods for each kind of request we'll make
 
 var API = {
-<<<<<<< HEAD
   saveJob: function(job) {
-=======
-  saveExample: function (example) {
->>>>>>> 8eb902a335583666a74797de242016becdd48411
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -33,21 +18,15 @@ var API = {
       data: JSON.stringify(job)
     });
   },
-<<<<<<< HEAD
+
   getJobs: function() {
-=======
-  getExamples: function () {
->>>>>>> 8eb902a335583666a74797de242016becdd48411
     return $.ajax({
       url: "api/jobs",
       type: "GET"
     });    
   },
-<<<<<<< HEAD
+
   deleteJob: function(id) {
-=======
-  deleteExample: function (id) {
->>>>>>> 8eb902a335583666a74797de242016becdd48411
     return $.ajax({
       url: "api/job/" + id,
       type: "DELETE"
@@ -56,15 +35,18 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-<<<<<<< HEAD
 var refreshJobs = function() {
   API.getJobs().then(function(data) {
     var $jobs = data.map(function(job) {
-=======
+
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
     var $examples = data.map(function (example) {
->>>>>>> 8eb902a335583666a74797de242016becdd48411
+
+var refreshJobs = function() {
+  API.getJobs().then(function(data) {
+    var $jobs = data.map(function(job) {
+
       var $a = $("<a>")
         .text(job.jobTitle)
         .attr("href", "/job/" + job.job_id);      
@@ -135,9 +117,7 @@ var handleDeleteBtnClick = function() {
 
 // // Add event listeners to the submit and delete buttons
  $(document).ready(function() {
-  var $submitBtn = $("#submit");
-
     $submitBtn.on("click", handleFormSubmit);
     $jobsList.on("click", ".delete", handleDeleteBtnClick);
  });
-
+    
