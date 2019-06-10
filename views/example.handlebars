@@ -3,15 +3,52 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Example</h5>
+          <h1 class="card-title">Job Trax Logged Information</h1>
+          {{!-- <p>
+            <strong>ID</strong>: {{example.id}}
+          </p> --}}
           <p>
-            <strong>ID</strong>: {{example.id}}</p>
+            <strong>Text</strong>: {{example.text}}
+          </p>
           <p>
+            <strong>Company</strong>: {{example.description}}
+          </p>
           <p>
-            <strong>Text</strong>: {{example.text}}</p>
+            <strong>URL</strong>: {{example.url}}
+          </p>
           <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+            <strong>Action Date:</strong> {{example.actionDate}}
+          </p>
+
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Email
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> Call
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Interview
+              </button>
+            </div>
+          </div>
+
+          <h3>Job Trax Time Log:</h3>
+          <hr />
+          {{!-- <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul> --}}
+          <a href="/">← Back To Home</a>
         </div>
       </div>
     </div>
