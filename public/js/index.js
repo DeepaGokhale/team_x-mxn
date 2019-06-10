@@ -1,3 +1,14 @@
+
+//function copied from frontend.js
+function attachToken(token) {
+  //the attachToken function adds the token to EVERY ajax request
+  $.ajaxSetup({
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+}
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -20,7 +31,10 @@ var API = {
     return $.ajax({
       url: "api/examples",
       type: "GET"
-    });
+    })
+    // .then(function(response) {
+    //   console.warn("[attached] Got Data from protected route:",response);
+    // });
   },
   deleteExample: function(id) {
     return $.ajax({
@@ -32,6 +46,8 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
+  console.log("refreshExamples() index.js");
+  
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
