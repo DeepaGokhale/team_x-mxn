@@ -5,7 +5,7 @@
     "database": "teamxmxn",
     "host": "localhost",
     "dialect": "mysql",
-    "port": 8889
+    "port": 8889 
   },
   "test": {
     "username": "root",
