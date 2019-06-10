@@ -3,27 +3,51 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" id= "formJob" >
-           <div class="form-group">
-            <label for="job-company">Job Company</label>
-            <input type="text" id="job_company" class="form-control" aria-describedby="job_company" placeholder="Enter Job Company">
-          </div>
-          <div class="form-group">
-            <label for="job-title">Job Title</label>
-            <input type="text" id="job_title" class="form-control" aria-describedby="job_title" placeholder="Enter Job Title">
-          </div>
-          <div class="form-group">
-            <label for="job-description">Job Description</label>
-            <textarea class="form-control" id="job_description" aria-describedbyrz="job-description" placeholder="Enter Job Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Jobs:</h3>
-        <ul id="jobs_list" class="list-group">
-          {{#each jobs}}
-          <li data-id="{{this.job_id}}" class="list-group-item">
-            <a href="job/{{this.job_id}}">{{this.title}}</a>
+        <h1> Job Trax </h1>
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Create your Trax</button>
+        <div id="demo" class="collapse">
+          <hr />
+
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="example-text">Title</label>
+              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                placeholder="Type the Job Title">
+            </div>
+
+            <div class="form-group">
+              <label for="example-text">Company</label>
+              <input type="text" id="example-description" class="form-control" aria-describedby="example-text"
+                placeholder="Type the Comapny Name">
+            </div>
+
+            <div class="form-group">
+              <label for="example-text">URL</label>
+              <input type="text" id="companyURL" class="form-control" aria-describedby="example-text"
+                placeholder="Type the Website URL">
+            </div>
+
+            <div class="form-group">
+              <label for="example-text">Action Date</label>
+
+              <input id="datepicker" width="300" class="form-control" aria-describedby="example-text"
+                placeholder="Date you want it completed?" />
+              <script>
+                $('#datepicker').datepicker({
+                  uiLibrary: 'bootstrap'
+                });
+              </script>
+            </div>
+            <button id="submit" class="btn btn-primary float-right">Submit</button>
+          </form>
+        </div>
+        <hr />
+        <h3>Listed Job Trax:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -32,7 +56,16 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+  $('#datetimepicker').datetimepicker({
+    format: 'MM/dd/yyyy',
+    language: ''
+  });
+</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<<<<<<< HEAD
 <script src="/js/index.js"></script>
 
+=======
+<script src="/js/index.js"></script>
+>>>>>>> 8eb902a335583666a74797de242016becdd48411
