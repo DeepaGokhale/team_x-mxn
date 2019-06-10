@@ -87,6 +87,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+<<<<<<< HEAD
 
 # config
 config/config.json
+=======
+>>>>>>> 8eb902a335583666a74797de242016becdd48411
