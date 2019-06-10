@@ -10,54 +10,64 @@ function attachToken(token) {
 }
 
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $jobsTitle = $("#job_title");
+var $jobsCompany = $("#job_company");
+var $jobDescription = $("#job_description");
+var $jobsList = $("#jobs_list");
 
 // The API object contains methods for each kind of request we'll make
+
 var API = {
-  saveExample: function(example) {
+  saveJob: function(job) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/jobs",
+      data: JSON.stringify(job)
     });
   },
-  getExamples: function() {
+  getJobs: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/jobs",
       type: "GET"
+<<<<<<< HEAD
     })
     // .then(function(response) {
     //   console.warn("[attached] Got Data from protected route:",response);
     // });
+=======
+    });    
+>>>>>>> e5820ee922767e79a08761a7e7e7838a7bc5d881
   },
-  deleteExample: function(id) {
+  deleteJob: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/job/" + id,
       type: "DELETE"
     });
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
+<<<<<<< HEAD
 var refreshExamples = function() {
   console.log("refreshExamples() index.js");
   
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
+=======
+var refreshJobs = function() {
+  API.getJobs().then(function(data) {
+    var $jobs = data.map(function(job) {
+>>>>>>> e5820ee922767e79a08761a7e7e7838a7bc5d881
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
+        .text(job.jobTitle)
+        .attr("href", "/job/" + job.job_id);      
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": job.job_id
         })
         .append($a);
 
@@ -70,46 +80,60 @@ var refreshExamples = function() {
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $jobsList.empty();
+    $jobsList.append($jobs);
   });
 };
+
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
+  console.log("Reached in handleSubmit");
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var job = {
+    UserId: 1, //dummy for now
+    company: $jobsCompany.val().trim(), //dummy for now
+    close_by: '1/1/2020',
+    active: true, //always true on creation
+    created_on: Date.now(),
+    title: $jobsTitle.val().trim(),
+    description: $jobDescription.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(job.title && job.description)) {
+    alert("You must enter an job title and description!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  console.log("save job:", job);
+  API.saveJob(job).then(function(data) {
+    refreshJobs;
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $jobsTitle.val("");
+  $jobDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
+  console.log("Reeached the delete");
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteJob(idToDelete).then(function() {
+    refreshJobs;
   });
 };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+// // Add event listeners to the submit and delete buttons
+ $(document).ready(function() {
+  var $submitBtn = $("#submit");
+
+    $submitBtn.on("click", handleFormSubmit);
+    $jobsList.on("click", ".delete", handleDeleteBtnClick);
+ });
+

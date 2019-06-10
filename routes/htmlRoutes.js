@@ -1,5 +1,5 @@
 var db = require("../models");
-const jwt           = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
   // Load index page
@@ -14,12 +14,6 @@ module.exports = function(app) {
     }else{
       console.log('req.user exists');
     }
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     examples: dbExamples
-    //   });
-    // });
     
   });
 
@@ -27,18 +21,21 @@ module.exports = function(app) {
     if (!req.user){
       res.json(401);
     }
-    db.Example.findAll({}).then(function(dbExamples) {
+    
+    db.Jobs.findAll({
+      attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on']
+    }).then(function(dbJobs) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+        msg: "Welcome to Jobs!",
+        jobs: dbJobs
       });
     });  
   });
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/job/:id", function(req, res) {
+    db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
+      res.render("job", {
+        job: dbJob
       });
     });
   });
@@ -47,4 +44,5 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+
 };

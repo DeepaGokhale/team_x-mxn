@@ -58,6 +58,7 @@ app.use(require('./routes/database-routes'));
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
+//don't want to drop and recreate all the time
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -77,11 +78,7 @@ db.sequelize.sync(syncOptions)
 })
 .then(function() {
   app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT);
   });
 });
 
