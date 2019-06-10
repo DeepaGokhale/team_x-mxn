@@ -1,4 +1,5 @@
 var db = require("../models");
+const jwt           = require('jsonwebtoken');
 
 module.exports = function(app) {
   // Load index page
@@ -9,8 +10,6 @@ module.exports = function(app) {
   // if (!req.user) return res.sendStatus(401);
     if (!req.user) {
       res.render("login", {
-        // msg: "Welcome!",
-        // examples: dbExamples
       });
     }else{
       console.log('req.user exists');
