@@ -1,24 +1,38 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all jobs
+  app.get("/api/jobs", function(req, res) {
+    db.Jobs.findAll({}).then(function(dbJobs) {
+      res.json(dbJobs);      
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Get job details for given id
+  app.get("/api/job/:id", function(req, res) {
+    db.Jobs.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbJob) {
+      res.json(dbJob);      
+    });
+  });
+  
+  // Create a new job
+  app.post("/api/jobs", function(req, res) {
+    db.Jobs.create(req.body)
+      .then(function() {
+        res.redirect("/");
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/job/:id", function(req, res) {
+    db.Jobs.destroy({ where: { job_id: req.params.id } })
+      .then(function() {
+        res.redirect("/");
     });
   });
 };
+
