@@ -32,14 +32,7 @@ var API = {
     return $.ajax({
       url: "api/jobs",
       type: "GET"
-<<<<<<< HEAD
-    })
-    // .then(function(response) {
-    //   console.warn("[attached] Got Data from protected route:",response);
-    // });
-=======
     });    
->>>>>>> e5820ee922767e79a08761a7e7e7838a7bc5d881
   },
   deleteJob: function(id) {
     return $.ajax({
@@ -50,17 +43,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-<<<<<<< HEAD
-var refreshExamples = function() {
-  console.log("refreshExamples() index.js");
-  
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-=======
 var refreshJobs = function() {
   API.getJobs().then(function(data) {
     var $jobs = data.map(function(job) {
->>>>>>> e5820ee922767e79a08761a7e7e7838a7bc5d881
       var $a = $("<a>")
         .text(job.jobTitle)
         .attr("href", "/job/" + job.job_id);      
