@@ -67,7 +67,6 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-<<<<<<< HEAD
 db.sequelize.sync(syncOptions)
 .then(function(){
   console.log('creating user in db : '+ TEST_USER.user_name);
@@ -77,10 +76,6 @@ db.sequelize.sync(syncOptions)
   })
 })
 .then(function() {
-=======
-db.sequelize.sync(syncOptions).then(function() {
-  
->>>>>>> 9f67acc1dbd81cbc274bbdab86a334916b1153d4
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
