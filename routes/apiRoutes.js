@@ -12,7 +12,7 @@ module.exports = function(app) {
   app.get("/api/job/:id", function(req, res) {
     db.Jobs.findOne({
       where: {
-        id: req.params.id
+        job_id: req.params.id
       }
     }).then(function(dbJob) {
       res.json(dbJob);      
@@ -36,27 +36,29 @@ module.exports = function(app) {
   });
 
   app.get("/api/actions/:id", function(req, res) {
-    // 2. Add a join here to include the Author who wrote the Post
-    var query = {};
-    if (req.query.job_action_id) {
-      query.job_id = req.query.job_id;
-    }
-    // 1. Add a join here to include all of the Authors to these posts
-    db.Actions.findAll({
+  
+    db.Actions.findOne({
       include: [db.Jobs],
-      where: query
+      where: {
+        job_action_id: req.params.id
+      }
     }).then(function(dbActions) {
+      console.log(dbActions);
       res.json(dbActions);
     });
   });
 
   //get all actions
   app.get("/api/actions/", function(req, res) {
-    // 2. Add a join here to include the Author who wrote the Post
-    db.Actions.findOne({
+    var query = {};
+    console.log("req");
+    console.log(req.body);
+
+
+    db.Actions.findAll({
       include: [db.Jobs],
       where: {
-        job_id: req.params.job_id
+        job_id : req.body.job_id
       }
     }).then(function(dbActions) {
       console.log(dbActions);
