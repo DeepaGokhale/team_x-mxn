@@ -5,7 +5,11 @@
 
     $("#sign-in-button").on("click", function() {
         const body = {
+<<<<<<< HEAD
             user_name: $("#user_name-input").val(),
+=======
+            username: $("#username-input").val(),
+>>>>>>> 1a78fc101a6dd62cf2747bfbaa591bf2cd585b7f
             password: $("#password-input").val(),
         }
 

@@ -9,7 +9,6 @@ function attachToken(token) {
     });
 }
 
-
 // Get references to page elements
 var $jobsTitle = $("#job_title");
 var $jobsCompany = $("#job_company");
