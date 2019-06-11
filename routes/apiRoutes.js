@@ -22,17 +22,17 @@ module.exports = function(app) {
   // Create a new job
   app.post("/api/jobs", function(req, res) {
     db.Jobs.create(req.body)
-      .then(function() {
-        res.redirect("/");
+      .then(function(data) {
+        res.json(data);
     });
   });
 
   // Delete an example by id
   app.delete("/api/job/:id", function(req, res) {
     db.Jobs.destroy({ where: { job_id: req.params.id } })
-      .then(function() {
-        res.redirect("/");
+      .then(function(data) {
+        res.json(data);
     });
-  });
+  });  
 };
 
