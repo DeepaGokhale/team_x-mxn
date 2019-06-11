@@ -102,6 +102,7 @@ var handleFormSubmit = function(event) {
   console.log("save job:", job);
   API.saveJob(job).then(function(data) {
     console.log(data);
+    window.location.reload();
   });
   
   $jobsTitle.val("");
