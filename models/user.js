@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var User = sequelize.define("User", {
     // Giving the Author model a name of type STRING
-    user_name: DataTypes.STRING,
+    username: DataTypes.STRING,
     password: DataTypes.STRING,
   });
 
 
-  return Users;
+  return User;
 };
