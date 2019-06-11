@@ -102,15 +102,17 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function(event) {
+  event.preventDefault();
   console.log("Reached the delete");
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
     console.log("IdToDelete: " , idToDelete);
     API.deleteJob(idToDelete)
-      .then(function() {
+      .then(function(data) {
         console.log(data);
+        window.location.reload();
   });
   
 };

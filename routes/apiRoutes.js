@@ -23,7 +23,7 @@ module.exports = function(app) {
   app.post("/api/jobs", function(req, res) {
     db.Jobs.create(req.body)
       .then(function(data) {
-        res.JSON(data);
+        res.json(data);
     });
   });
 
@@ -31,7 +31,7 @@ module.exports = function(app) {
   app.delete("/api/job/:id", function(req, res) {
     db.Jobs.destroy({ where: { job_id: req.params.id } })
       .then(function(data) {
-        res.JSON(data);
+        res.json(data);
     });
   });  
 };
