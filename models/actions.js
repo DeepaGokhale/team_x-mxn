@@ -8,10 +8,11 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
           },
-        job_id: { 
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+        //sequelize creates JobJobId column automatically  
+        // job_id: { 
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        // },
         action_type:  { 
             type: DataTypes.STRING,
             allowNull: false,
@@ -34,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: {
             allowNull: false
             }
-        })
+        });
     }
 
      

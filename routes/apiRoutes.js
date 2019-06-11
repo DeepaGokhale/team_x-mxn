@@ -49,7 +49,7 @@ module.exports = function(app) {
   });
 
   //get all actions
-  app.get("/api/actions/", function(req, res) {
+  app.get("/api/actions", function(req, res) {
     var query = {};
     console.log("req");
     console.log(req.body);
@@ -63,6 +63,14 @@ module.exports = function(app) {
     }).then(function(dbActions) {
       console.log(dbActions);
       res.json(dbActions);
+    });
+  });
+
+  //create new action
+  app.post("/api/actions", function(req, res) {
+    db.Actions.create(req.body)
+      .then(function() {
+        res.redirect("/");
     });
   });
 

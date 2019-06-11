@@ -13,17 +13,19 @@ module.exports = function(sequelize, DataTypes) {
         type:  DataTypes.DATE,
         allowNull: false,
         defaultValue: sequelize.NOW
-     },
-      updated_at:         { 
-        type:  DataTypes.DATE,
-        allowNull: false,
-        defaultValue: sequelize.NOW
-     },
+     }
+
     });
 
     
     //add the hasmany for actions
       // Users.hasMany(Job);
+
+    Users.associate = function(models) {
+      Users.hasMany(models.Jobs, {
+          onDelete: "cascade"
+      });
+    };
 
     return Users;
   };
