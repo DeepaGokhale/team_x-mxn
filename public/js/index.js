@@ -4,6 +4,9 @@ var $jobsTitle = $("#job_title");
 var $jobsCompany = $("#job_company");
 var $jobDescription = $("#job_description");
 var $jobsList = $("#jobs_list");
+var $submitBtn = $("#submit");
+var $actionDate = $('#action_datepicker');
+var userId = 1; // req.user after the merge from the authentication
 
 // The API object contains methods for each kind of request we'll make
 
@@ -35,14 +38,6 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshJobs = function() {
-  API.getJobs().then(function(data) {
-    var $jobs = data.map(function(job) {
-
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
-
 var refreshJobs = function() {
   API.getJobs().then(function(data) {
     var $jobs = data.map(function(job) {
@@ -79,9 +74,9 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var job = {
-    UserId: 1, //dummy for now
+    UserId: userId, //dummy for now
     company: $jobsCompany.val().trim(), //dummy for now
-    close_by: '1/1/2020',
+    close_by: $actionDate.val().trim(),
     active: true, //always true on creation
     created_on: Date.now(),
     title: $jobsTitle.val().trim(),
@@ -95,11 +90,14 @@ var handleFormSubmit = function(event) {
 
   console.log("save job:", job);
   API.saveJob(job).then(function(data) {
-    refreshJobs;
+    console.log(data);
   });
-
+  
   $jobsTitle.val("");
   $jobDescription.val("");
+  $jobsCompany.val("");
+  $actionDate.val("");
+
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -109,10 +107,12 @@ var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
-
-  API.deleteJob(idToDelete).then(function() {
-    refreshJobs;
+    console.log("IdToDelete: " , idToDelete);
+    API.deleteJob(idToDelete)
+      .then(function() {
+        console.log(data);
   });
+  
 };
 
 // // Add event listeners to the submit and delete buttons
