@@ -21,7 +21,8 @@ module.exports = function(app) {
     if (!req.user){
       res.json(401);
     }
-    
+    console.log("Index route hit by user with ID: " + req.user.id);
+  
     db.Jobs.findAll({
       attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on']
     }).then(function(dbJobs) {
@@ -31,14 +32,15 @@ module.exports = function(app) {
       });
     });  
   });
+  
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
+ app.get("/job/:id", function(req, res) {
+  db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
+    res.render("job", {
+      job: dbJob
     });
   });
+});
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

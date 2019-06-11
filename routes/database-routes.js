@@ -8,7 +8,7 @@ const {JWT_OPTIONS, JWT_SECRET_KEY, TEST_USER}            = require('../config/j
 router.get('/test', function(req, res) {
     //JWT-Express autofills req.user, we can use that to 
     if (!req.user) return res.sendStatus(401);
-    console.log("Test route hit by user with ID: " + req.user.id)
+    console.log("Test route hit by user with ID: " + req.user.id);
     res.json(req.user);
 });
 
@@ -21,7 +21,7 @@ router.post('/token', function(req,res) {
         }
     })
         .then(function(result) {
-            console.log (result.id + "was id found in databse, d-r.js");
+            console.log (result.id + "was id found in database, database-routes.js");
             if (!result) return res.sendStatus(404).send(); //user wasn't found in the database, send a 404
 
 
@@ -38,7 +38,7 @@ router.post('/token', function(req,res) {
                     function(err, token) {
                         if (err) return res.sendStatus(500).json(err) //do some error checking
                         //test auth
-                        console.log("jwt sign database-routes.js : user_name: " + result.user_name);
+                        console.log("jwt signed token (database-routes.js) : user_name: " + result.user_name);
                         res.cookie('token', token);
                         res.json({
                             user: userDetails,
