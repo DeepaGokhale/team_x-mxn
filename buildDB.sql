@@ -42,7 +42,7 @@ CREATE TABLE `Actions`
 
 ALTER TABLE `Jobs` ADD FOREIGN KEY (`userid`) REFERENCES `Users` (`user_id`);
 
-ALTER TABLE `Actions` ADD FOREIGN KEY (`action_id`) REFERENCES `Action_Type` (`action_id`);
+ALTER TABLE `Actions` ADD FOREIGN KEY (`action_id`) REFERENCES `ActionType` (`action_id`);
 
 ALTER TABLE `Actions` ADD FOREIGN KEY (`job_id`) REFERENCES `Jobs` (`job_id`);
 
