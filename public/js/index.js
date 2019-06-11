@@ -1,3 +1,14 @@
+
+//function copied from frontend.js
+function attachToken(token) {
+  //the attachToken function adds the token to EVERY ajax request
+  $.ajaxSetup({
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+}
+
 // Get references to page elements
 
 var $jobsTitle = $("#job_title");

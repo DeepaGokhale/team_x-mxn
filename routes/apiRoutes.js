@@ -1,7 +1,9 @@
 var db = require("../models");
+const jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
-  // Get all jobs
+  
+  // Get all jobs  
   app.get("/api/jobs", function(req, res) {
     db.Jobs.findAll({}).then(function(dbJobs) {
       res.json(dbJobs);      
