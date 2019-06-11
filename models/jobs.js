@@ -30,7 +30,17 @@ module.exports = function(sequelize, DataTypes) {
     }
 
     //add the has many for actions
-    
+
+      
+    Jobs.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Jobs.hasMany(models.Actions, {
+            onDelete: "cascade"
+        });
+    };
+      
+
 
     return Jobs;
   };

@@ -34,5 +34,35 @@ module.exports = function(app) {
         res.redirect("/");
     });
   });
+
+  app.get("/api/actions/:id", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    var query = {};
+    if (req.query.job_action_id) {
+      query.job_id = req.query.job_id;
+    }
+    // 1. Add a join here to include all of the Authors to these posts
+    db.Actions.findAll({
+      include: [db.Jobs],
+      where: query
+    }).then(function(dbActions) {
+      res.json(dbActions);
+    });
+  });
+
+  //get all actions
+  app.get("/api/actions/", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Actions.findOne({
+      include: [db.Jobs],
+      where: {
+        job_id: req.params.job_id
+      }
+    }).then(function(dbActions) {
+      console.log(dbActions);
+      res.json(dbActions);
+    });
+  });
+
 };
 
