@@ -30,11 +30,17 @@ $("#sign-in-button").on("click", function() {
         //     console.warn("[attached] Got Data from protected route '/index' :",response);
         // });
     })
+    .fail(function(err){
+        console.log(err.status);
+    });
 });
 
 $("#new-user-button").on("click",function(){
     location.href = "/register";    
 })
+
+
+//method to demonstrate a test auth route
 function testToken(token) {
     $.ajax({
         url: "/test",
