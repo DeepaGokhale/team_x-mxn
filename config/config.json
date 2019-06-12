@@ -2,10 +2,10 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "teamxmxn",
+    "database": "TeamXmXn",
     "host": "localhost",
     "dialect": "mysql",
-    "port": 3306
+    "port": 8889
   },
   "test": {
     "username": "root",
@@ -15,8 +15,8 @@
     "dialect": "mysql",
     "logging": false
   },
-  "production": {
-    "use_env_variable": "blonze2d5mrbmcgf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "production": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql"
+    }
   }
-}
