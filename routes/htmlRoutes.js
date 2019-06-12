@@ -39,7 +39,7 @@ module.exports = function(app) {
       }
     }).then(function(dbJobs) {
       res.render("index", {
-        msg: "Welcome to Jobs!",
+        msg: "",
         jobs: dbJobs
       });
     });  

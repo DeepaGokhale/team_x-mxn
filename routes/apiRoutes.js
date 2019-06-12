@@ -10,19 +10,20 @@ module.exports = function(app) {
       where: {
         user_name : req.body.user_name
       }
-      }).then(function(data){
-        if(data){
-          console.log("User already found in database, denying user name \r\n data returned from DB (apiRoutes.js): "+ data);
-          //add logic to reroute to login page (hopefully with an error message displayed to the user)
-        }
-        else{
-          //no user found in database, add them.  Then direct to /index
-          db.Users.create(req.body)
-          .then(function(dbUser) {
-              console.log("New user not in database, adding them (apiRoutes.js)/r/n data returned from DB (apiRoutes.js): "+ dbUser.user_name);          
-              res.json(dbUser)
-          });
-        }
+    }).then(function(data){
+      if(data){
+        console.log("User already found in database, denying user name \r\n data returned from DB (apiRoutes.js): "+ data.user_name);
+        //add logic to reroute to login page (hopefully with an error message displayed to the user)
+        res.json({user_name: null});
+      }
+      else{
+        //no user found in database, add them.  Then direct to /index
+        db.Users.create(req.body).then(function(dbUser){
+          console.log("New user not in database, adding them (apiRoutes.js)/r/n data returned from DB (apiRoutes.js): "+dbUser.user_name);
+        
+          res.json(dbUser)
+        });
+      }
     });
   })
 
