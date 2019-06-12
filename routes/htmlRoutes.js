@@ -17,12 +17,20 @@ module.exports = function(app) {
     
   });
 
+  //route for a new user to register
+  app.get("/register",function(req,res){
+    if (!req.user){
+      res.json(401);
+    }
+    console.log("Register route hit by user with ID: " + req.user.id);
+      res.render("register", {});
+    });
+
   app.get("/index",function(req,res){
     if (!req.user){
       res.json(401);
     }
     console.log("Index route hit by user with ID: " + req.user.id);
-  
     db.Jobs.findAll({
       attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on']
     }).then(function(dbJobs) {
