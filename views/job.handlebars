@@ -37,6 +37,13 @@
           </div>
 
           <h3>Job Trax Time Log:</h3>
+          <p>
+            {{#each action}}
+              <li>{{this.action_type}}</li>
+              <li>{{this.comments}}</li>
+              <li>{{this.updatedAt}}</li>
+            {{/each}}
+            </p>
           <hr />
           <a class="backto" href="/index">← Back To Home</a>
         </div>

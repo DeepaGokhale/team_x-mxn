@@ -18,16 +18,32 @@ module.exports = function (sequelize, DataTypes) {
 
   });
 
-  // Add a belongsTo association to Users here 
-  // if deleted the list of jobs for that user should go
+  //add the has many for actions
+
+
   Jobs.associate = function (models) {
-    models.Jobs.belongsTo(models.Users, {
-      OnDelete: "CASCADE",
-      foreignKey: {
-        allowNull: false
-      }
-    })
-  }
+    models.Jobs.hasMany(models.Actions, {
+      onDelete: "cascade"
+    }),
+      models.Jobs.belongsTo(models.Users, {
+        OnDelete: "CASCADE",
+        foreignKey: {
+          allowNull: false
+        }
+      });
+
+  };
+
+  // Jobs.associate = function(models) {
+  //     models.Jobs.belongsTo(models.Users, {
+  //         OnDelete: "CASCADE",
+  //         foreignKey: {
+  //         allowNull: false
+  //         }
+  //     });
+  // }
+
+
 
   //add the has many for actions
 

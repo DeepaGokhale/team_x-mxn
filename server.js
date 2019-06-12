@@ -35,7 +35,7 @@ app.use(jwt_express({
     return null;
   }
 
-}).unless({path: ['/','/login','/token', '/favicon.ico','/api/register']}));
+}).unless({path: ['/','/login','/token', '/favicon.ico','/register','/api/register']}));
 
 
 

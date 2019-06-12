@@ -19,10 +19,8 @@ module.exports = function(app) {
 
   //route for a new user to register
   app.get("/register",function(req,res){
-    if (!req.user){
-      res.json(401);
-    }
-    console.log("Register route hit by user with ID: " + req.user.id);
+    
+    // console.log("Register route hit by user with ID: " + req.user.id);
       res.render("register", {});
     });
 
@@ -47,12 +45,16 @@ module.exports = function(app) {
   
     // Load job details page by passing in job_id
   app.get("/job/:id", function(req, res) {
-    db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
-      res.render("job", 
-      {
-        job: dbJob
+    db.Jobs.findOne({
+      include: [db.Actions], 
+      where: { job_id: req.params.id } }).then(function(dbJob) {
+      res.render("job", {
+        job: dbJob,
+        action: dbJob.Actions
+
       });
     });
+
   });
 
   // Render 404 page for any unmatched routes
