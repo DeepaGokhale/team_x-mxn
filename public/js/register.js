@@ -7,7 +7,7 @@ $("#create-new-user-button").on("click",function(){
         user_name: $("#new-user_name-input").val().trim(),
         password: $("#new-password-input").val(),
     }
-    console.log("verifying password (register.js) pw1 pw2 = "+ body.password +" "+ password_verify);
+    // console.log("verifying password (register.js) pw1 pw2 = "+ body.password +" "+ password_verify);
     if(password_verify == body.password){
         $.ajax({
             headers: {
