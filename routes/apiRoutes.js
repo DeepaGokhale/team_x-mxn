@@ -50,9 +50,20 @@ module.exports = function (app) {
   });
 
   // Create a new job
-  app.post("/api/jobs", function (req, res) {
-    db.Jobs.create(req.body)
-      .then(function (data) {
+  app.post("/api/jobs", function(req, res) {   
+    var newJob = {
+      UserId: req.user.id,
+      company: req.body.company,
+      title: req.body.title,
+      description: req.body.description,
+      close_by: req.body.close_by,
+      active: true,
+      created_on:  Date.now()
+    };
+    
+    //console.log(newJob);
+    db.Jobs.create(newJob)
+      .then(function(data) {
         res.json(data);
       });
   });
