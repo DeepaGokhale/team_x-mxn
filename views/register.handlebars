@@ -1,20 +1,29 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Create A New Account</h1>
-      <hr/>
-      <input id="new-user_name-input" placeholder="New User Name" />
-      <input id="new-password-input" placeholder="New Password" />
-      <input id="new-password-verify-input" placeholder="Retype Your Password" />
-      <hr/>
-      <div>
+    <div class="row">
+        <div class="col-md-6 offset-2"> 
+          <br>
+            <h1>Create Your Account:</h1>
 
-        <button type="submit" id="create-new-user-button">Create a New Account</button>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-
+            <hr/>
+                <form>
+                    <div class="form-group">          
+                        <input class="form-control" id="new-user_name-input" placeholder="Nhu Username"/><br>
+                        <input type="password" class="form-control" id="new-password-input" placeholder="Nhu Password"/><br>
+                        <input type="password" class="form-control" id="new-password-verify-input" placeholder="Retype Nhu Password"/><br>
+                        <hr/>
+                        <div>
+                            <button class="btn btn-primary" type="submit" id="create-new-user-button">CREATE YOUR ACCOUNT</button>
+                        </div>
+                    </div>
+                    <a class="backto" href="/">← Back To Job Trax</a>
+                </form>
+            
+        </div>
+        
+        <div id="message-div" class="col-md-12">
+            
+        </div>
+        <div class="col-md-12"></div>
     </div>
     <div class="col-md-12"></div>
   </div>

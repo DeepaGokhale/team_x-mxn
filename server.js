@@ -5,7 +5,7 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3007;
+var PORT = process.env.PORT || 3003;
 
 //auth test
 const jwt_express = require('express-jwt');
@@ -35,7 +35,9 @@ app.use(jwt_express({
     return null;
   }
 
-}).unless({ path: ['/', '/token', '/favicon.ico', '/api/register'] }));
+}).unless({path: ['/','/login','/token', '/favicon.ico','/api/register']}));
+
+
 
 // app.use(jwt({
 //     secret: 'hello world !',
@@ -64,6 +66,12 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+// //Handlebars Helper
+// registerHelper('formatTime', function (date, format) {
+//   var mmnt = moment(date);
+//   return mmnt.format(format);
+// });
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)

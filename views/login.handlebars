@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1>Welcome to JobTrax</h1>
-      <input id="user_name-input" placeholder="user_name" />
-      <input id="password-input" placeholder="password" />
-      <div>
-        <button type="submit" id="sign-in-button">Sign In</button>
-        Or
-        <button type="submit" id="new-user-button">Create a New Account</button>
+    <div class="col-md-6 offset-2">
+      <br>
+      <h1>Welcome to JobTrax</h1> <br>
+
+      <div class="form-group">
+        <input class="form-control" id="user_name-input" placeholder="Username" /> <br>
+        <input type="password" class="form-control" id="password-input" placeholder="Password" />
+        <hr />
+
+        <div class="signInOrCreateAccount">
+          <button class="btn btn-primary sign_in" type="submit" id="sign-in-button">SIGN IN</button>
+          OR
+          <button class="btn btn-primary sign_in" type="submit" id="new-user-button">CREATE NEW ACCOUNT</button>
+        </div>
+
       </div>
     </div>
     <div class="col-md-12">
@@ -15,6 +22,8 @@
     </div>
     <div class="col-md-12"></div>
   </div>
+  <div class="col-md-12"></div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery.js"></script>

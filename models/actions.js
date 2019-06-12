@@ -1,4 +1,4 @@
-var sequelize = require("Sequelize");
+// var sequelize = require("Sequelize");
 // const Job = require('../models/jobs');
 
 module.exports = function (sequelize, DataTypes) {
@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     action_date:
     {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: sequelize.NOW
     },

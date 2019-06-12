@@ -86,7 +86,7 @@ var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var closeBy = $actionDate.val().trim();
-  var closeByConvert = moment(closeBy, "dddd, MMMM Do YYYY");
+  var closeByConvert = moment(closeBy).format("dddd, MMMM Do YYYY");
 
   var job = {
     UserId: userId, //dummy for now
