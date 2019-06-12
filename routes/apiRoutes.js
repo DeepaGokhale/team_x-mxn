@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 module.exports = function(app) {
   // Create a new user 
   app.post("/api/register",function(req,res){
-    console.log("/api/register hit, new user registering: "+req.body.user_name)
-    console.log("new password : "+req.body.password);
+    // console.log("/api/register hit, new user registering: " + req.body.user_name)
+    // console.log("new password : "+ req.body.password);
     db.Users.findOne({
       where: {
         user_name : req.body.user_name
@@ -26,9 +26,14 @@ module.exports = function(app) {
       }
     });
   })
+
   // Get all jobs  
   app.get("/api/jobs", function(req, res) {
-    db.Jobs.findAll({}).then(function(dbJobs) {
+    db.Jobs.findAll({
+      where: {
+        UserID: req.user.id
+      }
+    }).then(function(dbJobs) {
       res.json(dbJobs);      
     });
   });
@@ -54,8 +59,13 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/job/:id", function(req, res) {
-    db.Jobs.destroy({ where: { job_id: req.params.id } })
-      .then(function(data) {
+    db.Jobs.destroy({ 
+        where: { 
+          job_id: req.params.id,
+          //extra layer of precaution so wrong job could not be deleted
+          UserID:  req.user.id
+        } 
+      }).then(function(data) {
         res.json(data);
     });
   });  

@@ -1,4 +1,4 @@
-//var sequelize = require("Sequelize");
+// var sequelize = require("Sequelize");
 // const Job = require('../models/jobs');
 
 module.exports = function(sequelize, DataTypes) {
