@@ -13,14 +13,14 @@ text-align: center;
 }
 
 h1 {
-  font-size: 4em; 
+  font-size: 5em; 
 }
 
 h3 {
   font-size: 2.5em; 
 }
 
-.btn-info, .btn-primary, .form-group, .list-group, p, .btn-group, .backtohome {
+.btn-info, .btn-primary, .form-group, .list-group, p, .btn-group, .backtohome, .backto {
   font-family: 'Kanit', sans-serif;
 }
 
@@ -28,15 +28,31 @@ p {
   font-size: 1.25;
 }
 
-.btn-info {
+.btn-info, .btn-primary {
   align-content: center;
   align-items: center;
 }
 
-.btn-info, .btn-primary {
+.btn-info, .btn-primary, .btn-md {
   background-color:lightseagreen;
 }
 
 .list-group {
   text-decoration: none;
 }
+
+.sign_in {
+  align-content: center;
+  align-items: center;
+}
+
+.signInOrCreateAccount {
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.btn-md {
+  color: white;
+}
+
