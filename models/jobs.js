@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         company: DataTypes.STRING,
         title: DataTypes.STRING,
         description: DataTypes.STRING,
-        close_by: DataTypes.DATE,
+        close_by: DataTypes.STRING,
         active: DataTypes.BOOLEAN,
         created_on: { 
             type:  DataTypes.DATE,
