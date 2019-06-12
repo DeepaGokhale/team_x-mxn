@@ -5,13 +5,20 @@ $("#sign-in-button").on("click", function() {
         user_name: $("#user_name-input").val(),
         password: $("#password-input").val(),
     }
+    if ((body.user_name == "")||(body.password == "")){
+        $("#jwt-token").append("<h5 class='alert alert-warning' role='alert'>Both Fields Must be Filled In</h5>");
+            setTimeout(function(){
+                $("#jwt-token").empty();
+            }, 3000);
+    }
+     
     $.ajax({
         url: "/token",
         data: body,
         method: "post"
     })
     .then(function(response) {
-        console.warn("Got Data:",response); //Tells user their token (username ), not for production
+        // console.warn("Got Data:",response); //Tells user their token (username ), not for production
         // $("#jwt-token").text(response.token);  displays the token for testing
         $("#jwt-token").text("Logged in");
 
@@ -31,7 +38,20 @@ $("#sign-in-button").on("click", function() {
         // });
     })
     .fail(function(err){
-        console.log(err.status);
+        // console.log(err.status);
+        if (err.status == "401"){
+            $("#jwt-token").append("<h5 class='alert alert-warning' role='alert'>Password Incorrect. Try Again.</h5>");
+            setTimeout(function(){
+                $("#jwt-token").empty();
+            }, 3000);
+        }
+        if (err.status == "500"){
+            $("#jwt-token").append("<h5 class='alert alert-warning' role='alert'>User doesn't exist. Try Again.</h5>");
+            setTimeout(function(){
+                $("#jwt-token").empty();
+            }, 3000);
+        }
+
     });
 });
 
