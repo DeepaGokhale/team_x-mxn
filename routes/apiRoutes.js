@@ -42,7 +42,7 @@ module.exports = function(app) {
   app.get("/api/job/:id", function(req, res) {
     db.Jobs.findOne({
       where: {
-        id: req.params.id
+        job_id: req.params.id
       }
     }).then(function(dbJob) {
       res.json(dbJob);      
@@ -79,6 +79,63 @@ module.exports = function(app) {
       }).then(function(data) {
         res.json(data);
     });
-  });  
+  });
+
+  app.get("/api/actions/:id", function(req, res) {
+  
+    db.Actions.findOne({
+      include: [db.Jobs],
+      where: {
+        job_action_id: req.params.id
+      }
+    }).then(function(dbActions) {
+      console.log(dbActions);
+      res.json(dbActions);
+    });
+  });
+
+  //get all actions
+  app.get("/api/actions", function(req, res) {
+    var query = {};
+    console.log("req");
+    console.log(req.body);
+
+
+    db.Actions.findAll({
+      include: [db.Jobs],
+      where: {
+        job_id : req.body.job_id
+      }
+    }).then(function(dbActions) {
+      console.log(dbActions);
+      res.json(dbActions);
+    });
+  });
+
+  //create new action
+  app.post("/api/actions/", function(req, res) {
+    db.Actions.create(req.body)
+      .then(function(data) {
+        res.json(data);
+    });
+  });
+
+  app.put("/api/actions/:id", function(req, res) {
+    db.Actions.update(
+      req.body,
+      { where: {
+         job_action_id: req.params.id }
+      })
+      .then(function(data) {
+        res.json(data);
+    });
+  });
+
+  app.delete("/api/actions/:id", function(req, res) {
+    db.Actions.destroy({ where: { job_action_id: req.params.id } })
+      .then(function(data) {
+        res.json(data);
+    });
+  });
 };
 
