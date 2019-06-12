@@ -1,11 +1,11 @@
 USE teamxmxn;
 
 INSERT INTO Users
-(user_name, password, created_at, createdAt, updatedAt)
-VALUES('test1', 'test', now(), now(), now());
+(user_name, password, createdAt, updatedAt)
+VALUES('test1', 'test', now(), now());
 INSERT INTO Users
-(user_name, password, created_at, createdAt, updatedAt)
-VALUES('test2', 'test', now(), now(), now());
+(user_name, password, createdAt, updatedAt)
+VALUES('test2', 'test', now(), now());
 
 INSERT INTO jobs
 (company, title, description, close_by, active, created_on, createdAt, updatedAt, UserId)
