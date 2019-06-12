@@ -1,26 +1,28 @@
+//functions to implement the sign in page, used by login.handlebars
+
 $("#sign-in-button").on("click", function() {
     const body = {
         user_name: $("#user_name-input").val(),
         password: $("#password-input").val(),
     }
-
-
     $.ajax({
         url: "/token",
         data: body,
         method: "post"
     })
     .then(function(response) {
-        console.warn("Got Data:",response);
+        // console.warn("Got Data:",response); Tells user their token (username ), not for production
+        // $("#jwt-token").text(response.token);  displays the token for testing
+        $("#jwt-token").text("Logged in");
 
-        $("#jwt-token").text(response.token);
+        //saves json token to localstorage (likely unecessary as the token is also stored as a cookie)
         localStorage.setItem('token', response.token);
-        
+                  
         // testToken(response.token);
         attachToken(localStorage.getItem('token'));
         console.log('just before API.getExamples()')
-        // refreshExamples();
-        testTokenAttached();
+        
+        // testTokenAttached();  //test route to verify authetication is working
         // $("#jwt-token").append("<a href='/index'> GO TO SITE</a>");
         location.href = "/index";
         // $.get( "/index" )
@@ -30,6 +32,9 @@ $("#sign-in-button").on("click", function() {
     })
 });
 
+$("#new-user-button").on("click",function(){
+    location.href = "/register";    
+})
 function testToken(token) {
     $.ajax({
         url: "/test",
