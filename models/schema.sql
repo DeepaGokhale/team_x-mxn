@@ -15,7 +15,7 @@ CREATE TABLE `Users`
 CREATE TABLE `Jobs`
 (
   `job_id` int PRIMARY KEY,
-  `user_id` int NOT NULL,
+  `userId` int NOT NULL,
   `company` varchar(255),
   `title` varchar(255),
   `description` varchar(255),

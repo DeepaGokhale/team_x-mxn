@@ -3,15 +3,42 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">job</h5>
+          <h1 class="card-title">Job Trax Log Information</h1>
+          <hr/>
           <p>
-            <strong>Company</strong>: {{job.Company}}</p>
+            <strong>Title</strong>: {{job.title}}
+          </p>
           <p>
+            <strong>Company</strong>: {{job.company}}
+          </p>
           <p>
-            <strong>Title</strong>: {{job.title}}</p>
+            <strong>Job Details URL: </strong><a href={{job.description}}> {{job.title}}</a>
+          </p>
           <p>
-            <strong>Description:</strong>{{job.description}}</p>
-            <a href="/">← Back To Home</a>
+            <strong>Action Date: {{job.close_by}} </strong>
+          </p>
+
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Email
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> Call
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Interview
+              </button>
+            </div>
+          </div>
+
+          <h3>Job Trax Time Log:</h3>
+          <hr />
+          <a href="/index">← Back To Home</a>
         </div>
       </div>
     </div>
