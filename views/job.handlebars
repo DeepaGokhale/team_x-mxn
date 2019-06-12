@@ -3,8 +3,8 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h1 class="card-title">Job Trax Log Information</h1>
-          <hr/>
+          <h1 class="card-title">Job TraX Log Information</h1>
+          <hr />
           <p>
             <strong>Title</strong>: {{job.title}}
           </p>
@@ -20,32 +20,32 @@
 
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default btn-md">
-                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Email
+              <button type="button" class="btn btn-primary btn-default btn-md">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default btn-md">
-                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> Call
+              <button type="button" class="btn btn-primary btn-default btn-md">
+                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> CALL
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default btn-md">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Interview
+              <button type="button" class="btn btn-primary btn-default btn-md">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> INTERVIEW
               </button>
             </div>
           </div>
 
-          <h3>Job Trax Time Log:</h3>
+          <h3>Job TraX Time Log:</h3>
           <p>
             {{#each action}}
-              <li>{{this.action_type}}</li>
-              <li>{{this.comments}}</li>
-              <li>{{this.updatedAt}}</li>
+            <li>{{this.action_type}}</li>
+            <li>{{this.comments}}</li>
+            <li>{{this.updatedAt}}</li>
             {{/each}}
-            </p>
+          </p>
           <hr />
-          <a href="/index">← Back To Home</a>
+          <a class="backto" href="/index">← Back To Home</a>
         </div>
       </div>
     </div>
