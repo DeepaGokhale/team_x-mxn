@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         company: DataTypes.STRING,
         title: DataTypes.STRING,
         description: DataTypes.STRING,
-        close_by: DataTypes.DATE,
+        close_by: DataTypes.STRING,
         active: DataTypes.BOOLEAN,
         created_on: { 
             type:  DataTypes.DATE,
@@ -30,7 +30,31 @@ module.exports = function(sequelize, DataTypes) {
     }
 
     //add the has many for actions
-    
+
+      
+    Jobs.associate = function(models) {
+        models.Jobs.hasMany(models.Actions, {
+            onDelete: "cascade"
+        }),
+        models.Jobs.belongsTo(models.Users, {
+            OnDelete: "CASCADE",
+            foreignKey: {
+            allowNull: false
+            }
+        });
+
+    };
+
+    // Jobs.associate = function(models) {
+    //     models.Jobs.belongsTo(models.Users, {
+    //         OnDelete: "CASCADE",
+    //         foreignKey: {
+    //         allowNull: false
+    //         }
+    //     });
+    // }
+      
+
 
     return Jobs;
   };
