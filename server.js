@@ -34,7 +34,7 @@ app.use(jwt_express({ secret: JWT_SECRET_KEY,
     return null;
   }
 
-}).unless({path: ['/','/token', '/favicon.ico','/api/register']}));
+}).unless({path: ['/','/login','/token', '/favicon.ico','/api/register']}));
 
 
 

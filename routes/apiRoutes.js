@@ -12,8 +12,9 @@ module.exports = function(app) {
       }
     }).then(function(data){
       if(data){
-        console.log("User already found in database, denying user name \r\n data returned from DB (apiRoutes.js): "+ data);
+        console.log("User already found in database, denying user name \r\n data returned from DB (apiRoutes.js): "+ data.user_name);
         //add logic to reroute to login page (hopefully with an error message displayed to the user)
+        res.json({user_name: null});
       }
       else{
         //no user found in database, add them.  Then direct to /index
