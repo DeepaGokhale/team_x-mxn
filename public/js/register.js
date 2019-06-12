@@ -17,7 +17,20 @@ $("#create-new-user-button").on("click",function(){
             data: JSON.stringify(body),
             method: "post"
         }).then(function(data){
-            console.log(data);  //figure out if anything else needs to go here
+            if (!data.user_name){
+                $("#message-div").append("<h5>Username already exists, please choose another</h5>");
+                setTimeout(function(){
+                    $("#message-div").empty();
+                }, 3000);
+            }
+            else{
+                $("#message-div").append("<h5>Success!</h5>");
+                setTimeout(function(){
+                    location.href = "/"
+                }, 1000);
+                
+            }
+            
         });
     }
     
