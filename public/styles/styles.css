@@ -56,3 +56,11 @@ p {
   color: white;
 }
 
+.bgImg {
+  height: 100vh;
+  background-image: url(/images/beartracks.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-image: cross-fade(50%);
+}
