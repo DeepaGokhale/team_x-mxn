@@ -11,16 +11,16 @@ $("#sign-in-button").on("click", function() {
         method: "post"
     })
     .then(function(response) {
-        // console.warn("Got Data:",response); Tells user their token (username ), not for production
+        console.warn("Got Data:",response); //Tells user their token (username ), not for production
         // $("#jwt-token").text(response.token);  displays the token for testing
         $("#jwt-token").text("Logged in");
 
         //saves json token to localstorage (likely unecessary as the token is also stored as a cookie)
         localStorage.setItem('token', response.token);
-                  
+        
+        //Code to attach token with each ajax request
         // testToken(response.token);
         attachToken(localStorage.getItem('token'));
-        console.log('just before API.getExamples()')
         
         // testTokenAttached();  //test route to verify authetication is working
         // $("#jwt-token").append("<a href='/index'> GO TO SITE</a>");

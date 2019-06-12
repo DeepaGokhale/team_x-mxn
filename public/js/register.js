@@ -7,7 +7,7 @@ $("#create-new-user-button").on("click",function(){
         user_name: $("#new-user_name-input").val().trim(),
         password: $("#new-password-input").val(),
     }
-    console.log("verifying password (register.js) pw1pw2 = "+ body.password + password_verify);
+    console.log("verifying password (register.js) pw1 pw2 = "+ body.password +" "+ password_verify);
     if(password_verify == body.password){
         $.ajax({
             headers: {
@@ -17,21 +17,28 @@ $("#create-new-user-button").on("click",function(){
             data: JSON.stringify(body),
             method: "post"
         }).then(function(data){
+            //database found user with same user name, so it didn't return anything
             if (!data.user_name){
-                $("#message-div").append("<h5>Username already exists, please choose another</h5>");
+                $("#message-div").append("<h5 class='alert alert-warning' role='alert'>Username already exists, please choose another</h5>");
                 setTimeout(function(){
                     $("#message-div").empty();
                 }, 3000);
             }
             else{
-                $("#message-div").append("<h5>Success!</h5>");
+                $("#message-div").append("<h5 class='alert alert-success' role='alert'>Welcome in!</h5>");
                 setTimeout(function(){
                     location.href = "/"
-                }, 1000);
+                }, 700);
                 
             }
             
         });
+    }//if password fields don't match...
+    else{
+        $("#message-div").append("<h5 class='alert alert-warning' role='alert'>Password fields don't match.</h5>");
+        setTimeout(function(){
+            $("#message-div").empty();
+        }, 3000);
     }
     
 

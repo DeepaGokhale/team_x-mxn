@@ -1,15 +1,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">            
-            <h1>Register a New Account:</h1>
-            <input id="new-user_name-input" placeholder="New User Name"/>
-            <input id="new-password-input" placeholder="New Password"/>
-            <input id="new-password-verify-input" placeholder="Retype Your Password"/>
-            <div>
-                
-                <button type="submit" id="create-new-user-button">Create a New Account</button>
-            </div>
+        <div class="col-md-6 offset-2"> 
+            <h1>Create Your Account:</h1>
+                <form>
+                    <div class="form-group">          
+                        <input class="form-control" id="new-user_name-input" placeholder="New User Name"/>
+                        <input type="password" class="form-control" id="new-password-input" placeholder="Password"/>
+                        <input type="password" class="form-control" id="new-password-verify-input" placeholder="Retype Password"/>
+                        <div>
+                            <button class="btn btn-primary" type="submit" id="create-new-user-button">Create a New Account</button>
+                        </div>
+                    </div>
+                </form>
+            
         </div>
         
         <div id="message-div" class="col-md-12">
