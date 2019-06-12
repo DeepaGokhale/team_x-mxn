@@ -26,13 +26,17 @@ module.exports = function(app) {
       res.render("register", {});
     });
 
+   //get the jobs trax for current user 
   app.get("/index",function(req,res){
     if (!req.user){
       res.json(401);
     }
     console.log("Index route hit by user with ID: " + req.user.id);
-    db.Jobs.findAll({
-      attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on']
+    db.Jobs.findAll({      
+      attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on'],
+      where: {
+        UserID:  req.user.id
+      }
     }).then(function(dbJobs) {
       res.render("index", {
         msg: "Welcome to Jobs!",
@@ -41,14 +45,15 @@ module.exports = function(app) {
     });  
   });
   
-  // Load example page and pass in an example by id
- app.get("/job/:id", function(req, res) {
-  db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
-    res.render("job", {
-      job: dbJob
+    // Load job details page by passing in job_id
+  app.get("/job/:id", function(req, res) {
+    db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
+      res.render("job", 
+      {
+        job: dbJob
+      });
     });
   });
-});
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
