@@ -1,12 +1,13 @@
+// var moment = require("moment");
 
 //function copied from frontend.js
 function attachToken(token) {
   //the attachToken function adds the token to EVERY ajax request
   $.ajaxSetup({
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    });
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  });
 }
 
 // Get references to page elements
@@ -21,7 +22,7 @@ var $actionDate = $('#action_datepicker');
 // The API object contains methods for each kind of request we'll make
 
 var API = {
-  saveJob: function(job) {
+  saveJob: function (job) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -32,14 +33,14 @@ var API = {
     });
   },
 
-  getJobs: function() {
+  getJobs: function () {
     return $.ajax({
       url: "api/jobs",
       type: "GET"
-    });    
+    });
   },
 
-  deleteJob: function(id) {
+  deleteJob: function (id) {
     return $.ajax({
       url: "api/job/" + id,
       type: "DELETE"
@@ -48,15 +49,13 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshJobs = function() {
-  API.getJobs().then(function(data) {
-    var $jobs = data.map(function(job) {
-      console.log(localStorage.token.user);
-      console.log("User is: " + userId);
+var refreshJobs = function () {
+  API.getJobs().then(function (data) {
+    var $jobs = data.map(function (job) {
 
       var $a = $("<a>")
         .text(job.jobTitle)
-        .attr("href", "/job/" + job.job_id);      
+        .attr("href", "/job/" + job.job_id);
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
@@ -81,15 +80,18 @@ var refreshJobs = function() {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) 
-{
+var handleFormSubmit = function (event) {
+  console.log("Reached in handleSubmit");
   event.preventDefault();
   console.log("ReCHED IN SAVE ");
+
+  var closeBy = $actionDate.val().trim();
+  var closeByConvert = moment(closeBy).format("dddd, MMMM Do YYYY");
 
   var job = {
     UserId: 1, //gettting on ApiRoutes from JWT until then dummy
     company: $jobsCompany.val().trim(), //dummy for now
-    close_by: $actionDate.val().trim(),
+    close_by: closeByConvert,
     active: true, //always true on creation
     created_on: Date.now(),
     title: $jobsTitle.val().trim(),
@@ -104,11 +106,11 @@ var handleFormSubmit = function(event)
   }
 
   console.log("save job:", job);
-  API.saveJob(job).then(function(data) {
+  API.saveJob(job).then(function (data) {
     console.log(data);
     window.location.reload();
   });
-  
+
   $jobsTitle.val("");
   $jobDescription.val("");
   $jobsCompany.val("");
@@ -118,24 +120,23 @@ var handleFormSubmit = function(event)
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function(event) {
+var handleDeleteBtnClick = function (event) {
   event.preventDefault();
   console.log("Reached the delete");
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
-    console.log("IdToDelete: " , idToDelete);
-    API.deleteJob(idToDelete)
-      .then(function(data) {
-        console.log(data);
-        window.location.reload();
-  });
-  
+  console.log("IdToDelete: ", idToDelete);
+  API.deleteJob(idToDelete)
+    .then(function (data) {
+      console.log(data);
+      window.location.reload();
+    });
+
 };
 
 // // Add event listeners to the submit and delete buttons
- $(document).ready(function() {
-    $submitBtn.on("click", handleFormSubmit);
-    $jobsList.on("click", ".delete", handleDeleteBtnClick);
- });
-    
+$(document).ready(function () {
+  $submitBtn.on("click", handleFormSubmit);
+  $jobsList.on("click", ".delete", handleDeleteBtnClick);
+});
