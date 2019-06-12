@@ -3,7 +3,7 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h1 class="card-title">Job Trax Log Information</h1>
+          <h1 class="card-title">Job TraX Log Information</h1>
           <hr />
           <p>
             <strong>Title</strong>: {{job.title}}
@@ -36,14 +36,14 @@
             </div>
           </div>
 
-          <h3>Job Trax Time Log:</h3>
+          <h3>Job TraX Time Log:</h3>
           <p>
             {{#each action}}
-              <li>{{this.action_type}}</li>
-              <li>{{this.comments}}</li>
-              <li>{{this.updatedAt}}</li>
+            <li>{{this.action_type}}</li>
+            <li>{{this.comments}}</li>
+            <li>{{this.updatedAt}}</li>
             {{/each}}
-            </p>
+          </p>
           <hr />
           <a class="backto" href="/index">← Back To Home</a>
         </div>

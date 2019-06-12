@@ -19,8 +19,6 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   //add the has many for actions
-
-
   Jobs.associate = function (models) {
     models.Jobs.hasMany(models.Actions, {
       onDelete: "cascade"
@@ -31,9 +29,7 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false
         }
       });
-
   };
-
   // Jobs.associate = function(models) {
   //     models.Jobs.belongsTo(models.Users, {
   //         OnDelete: "CASCADE",
