@@ -1,3 +1,14 @@
+
+//function copied from frontend.js
+function attachToken(token) {
+  //the attachToken function adds the token to EVERY ajax request
+  $.ajaxSetup({
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+}
+
 // Get references to page elements
 
 var $jobsTitle = $("#job_title");
@@ -91,6 +102,7 @@ var handleFormSubmit = function(event) {
   console.log("save job:", job);
   API.saveJob(job).then(function(data) {
     console.log(data);
+    window.location.reload();
   });
   
   $jobsTitle.val("");
