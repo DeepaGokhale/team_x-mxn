@@ -21,11 +21,11 @@ module.exports = function(sequelize, DataTypes) {
     //add the hasmany for actions
       // Users.hasMany(Job);
 
-    Users.associate = function(models) {
-      Users.hasMany(models.Jobs, {
-          onDelete: "cascade"
-      });
-    };
+    // Users.associate = function(models) {
+    //   Users.hasMany(models.Jobs, {
+    //       onDelete: "cascade"
+    //   });
+    // };
 
     return Users;
   };

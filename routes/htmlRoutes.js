@@ -15,11 +15,17 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/job/:id", function(req, res) {
-    db.Jobs.findOne({ where: { job_id: req.params.id } }).then(function(dbJob) {
+    db.Jobs.findOne({
+      include: [db.Actions], 
+      where: { job_id: req.params.id } }).then(function(dbJob) {
+      console.log("RES!" + JSON.stringify(dbJob));
       res.render("job", {
-        job: dbJob
+        job: dbJob,
+        action: dbJob.Actions
+
       });
     });
+
   });
 
   // Render 404 page for any unmatched routes

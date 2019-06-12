@@ -26,7 +26,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 //don't want to drop and recreate all the time
-var syncOptions = { force: true };
+var syncOptions = { force: true};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

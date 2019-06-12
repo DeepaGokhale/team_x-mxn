@@ -67,12 +67,29 @@ module.exports = function(app) {
   });
 
   //create new action
-  app.post("/api/actions", function(req, res) {
+  app.post("/api/actions/", function(req, res) {
     db.Actions.create(req.body)
-      .then(function() {
-        res.redirect("/");
+      .then(function(data) {
+        res.json(data);
     });
   });
 
+  app.put("/api/actions/:id", function(req, res) {
+    db.Actions.update(
+      req.body,
+      { where: {
+         job_action_id: req.params.id }
+      })
+      .then(function(data) {
+        res.json(data);
+    });
+  });
+
+  app.delete("/api/actions/:id", function(req, res) {
+    db.Actions.destroy({ where: { job_action_id: req.params.id } })
+      .then(function(data) {
+        res.json(data);
+    });
+  });
 };
 

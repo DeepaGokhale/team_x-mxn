@@ -33,19 +33,26 @@ module.exports = function(sequelize, DataTypes) {
 
       
     Jobs.associate = function(models) {
-        Jobs.hasMany(models.Actions, {
+        models.Jobs.hasMany(models.Actions, {
             onDelete: "cascade"
-        });
-    };
-
-    Jobs.associate = function(models) {
+        }),
         models.Jobs.belongsTo(models.Users, {
             OnDelete: "CASCADE",
             foreignKey: {
             allowNull: false
             }
         });
-    }
+
+    };
+
+    // Jobs.associate = function(models) {
+    //     models.Jobs.belongsTo(models.Users, {
+    //         OnDelete: "CASCADE",
+    //         foreignKey: {
+    //         allowNull: false
+    //         }
+    //     });
+    // }
       
 
 

@@ -34,6 +34,14 @@ var API = {
       url: "api/job/" + id,
       type: "DELETE"
     });
+  },
+
+  getActions: function(jobId) {
+    alert("JobID" + jobId);
+    return $.ajax({
+      url: "api/actions/" + jobId,
+      type: "GET"
+    });
   }
 };
 
