@@ -7,7 +7,7 @@ module.exports = function(app) {
       attributes : ['job_id', 'UserId', 'company', 'title', 'description', 'close_by', 'active', 'created_on']
     }).then(function(dbJobs) {
       res.render("index", {
-        msg: "Welcome to Jobs!",
+        msg: "",
         jobs: dbJobs
       });
     });

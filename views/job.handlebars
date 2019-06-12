@@ -3,7 +3,8 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h1 class="card-title">Job Trax Logged Information</h1>
+          <h1 class="card-title">Job Trax Log Information</h1>
+          <hr/>
           <p>
             <strong>Title</strong>: {{job.title}}
           </p>
@@ -11,7 +12,7 @@
             <strong>Company</strong>: {{job.company}}
           </p>
           <p>
-             <strong>Job Details URL: </strong><a href= {{job.description}} > {{job.title}}</a> 
+            <strong>Job Details URL: </strong><a href={{job.description}}> {{job.title}}</a>
           </p>
           <p>
             <strong>Action Date: {{job.close_by}} </strong>
@@ -37,7 +38,7 @@
 
           <h3>Job Trax Time Log:</h3>
           <hr />
-          <a href="/">← Back To Home</a>
+          <a class="backtohome" href="/">← Back To Home</a>
         </div>
       </div>
     </div>
