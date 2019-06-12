@@ -10,14 +10,13 @@ function attachToken(token) {
 }
 
 // Get references to page elements
-
 var $jobsTitle = $("#job_title");
 var $jobsCompany = $("#job_company");
 var $jobDescription = $("#job_description");
 var $jobsList = $("#jobs_list");
 var $submitBtn = $("#submit");
 var $actionDate = $('#action_datepicker');
-var userId = 1; // req.user after the merge from the authentication
+// var userId = localStorage.token.userId; //  after the merge from the authentication
 
 // The API object contains methods for each kind of request we'll make
 
@@ -52,6 +51,8 @@ var API = {
 var refreshJobs = function() {
   API.getJobs().then(function(data) {
     var $jobs = data.map(function(job) {
+      console.log(localStorage.token.user);
+      console.log("User is: " + userId);
 
       var $a = $("<a>")
         .text(job.jobTitle)
@@ -80,12 +81,13 @@ var refreshJobs = function() {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  console.log("Reached in handleSubmit");
+var handleFormSubmit = function(event) 
+{
   event.preventDefault();
+  console.log("ReCHED IN SAVE ");
 
   var job = {
-    UserId: userId, //dummy for now
+    UserId: 1, //gettting on ApiRoutes from JWT until then dummy
     company: $jobsCompany.val().trim(), //dummy for now
     close_by: $actionDate.val().trim(),
     active: true, //always true on creation
@@ -93,6 +95,8 @@ var handleFormSubmit = function(event) {
     title: $jobsTitle.val().trim(),
     description: $jobDescription.val().trim()
   };
+
+  //console.log(job);
 
   if (!(job.title && job.description)) {
     alert("You must enter an job title and description!");
