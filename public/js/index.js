@@ -17,6 +17,8 @@ var $jobDescription = $("#job_description");
 var $jobsList = $("#jobs_list");
 var $submitBtn = $("#submit");
 var $actionDate = $('#action_datepicker');
+var $jobItem = $("#list-group-item");  //all job items (for on hover stylying)
+
 // var userId = localStorage.token.userId; //  after the merge from the authentication
 
 // The API object contains methods for each kind of request we'll make
@@ -139,4 +141,12 @@ var handleDeleteBtnClick = function (event) {
 $(document).ready(function () {
   $submitBtn.on("click", handleFormSubmit);
   $jobsList.on("click", ".delete", handleDeleteBtnClick);
+  $("#jobs_list > li").hover(function(){
+    // console.log($(this).children("a").attr("href"))
+    $(this).toggleClass("border border-info rounded")
+    $(this).click(function(){
+      location.href = $(this).children("a").attr("href");
+    });
+    
+  });
 });
