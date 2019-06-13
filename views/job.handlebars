@@ -37,13 +37,17 @@
           </div>
 
           <h3>Job TraX Time Log:</h3>
-          <p>
+         
+         <h3>Job TraX Time Log:</h3>
+          <ul class="list-group">
             {{#each action}}
-            <li>{{this.action_type}}</li>
-            <li>{{this.comments}}</li>
-            <li>{{this.updatedAt}}</li>
+            <li data-id="{{this.action_type}}" class="btn btn-light float-left actionFloat"><strong>{{this.action_type}}</strong>   |    {{this.updatedAt}}
+
+              <button class="btn btn-danger float-right delete">ｘ</button>
+            </li>
+
             {{/each}}
-          </p>
+          </ul>
           <hr />
           <a class="backto" href="/index">← Back To Home</a>
         </div>

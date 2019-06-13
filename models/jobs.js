@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     }),
       models.Jobs.belongsTo(models.Users, {
-        OnDelete: "CASCADE",
+        onDelete: "cascade",
         foreignKey: {
           allowNull: false
         }

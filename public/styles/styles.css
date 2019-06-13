@@ -64,3 +64,7 @@ p {
   background-attachment: fixed;
   background-image: cross-fade(50%);
 }
+
+.actionFloat {
+  text-align: left;
+}

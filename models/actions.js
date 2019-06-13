@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
   // if deleted the list of actions for that jobs should go
   Actions.associate = function (models) {
     models.Actions.belongsTo(models.Jobs, {
-      OnDelete: "CASCADE",
+      onDelete: "cascade",
       foreignKey: {
         allowNull: false
       }

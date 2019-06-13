@@ -6,8 +6,9 @@ $("#email-button").on("click", function() {
 
     var action = {
         action_type : "Email",
-        JobJobId : value,
-        action_date : moment().format("YYYY-MM-DD HH:mm:ss")
+        job_id : value,
+        JobJobId: value,
+        action_date : Date.now()
       };
 
     $.ajax({
@@ -28,7 +29,8 @@ $("#phone-button").on("click", function() {
 
     var action = {
         action_type : "Call",
-        JobJobId : value,
+        job_id : value,
+        JobJobId: value,
         action_date : moment().format("YYYY-MM-DD HH:mm:ss")
       };
 
@@ -50,7 +52,8 @@ $("#interview-button").on("click", function() {
 
     var action = {
         action_type : "Interview",
-        JobJobId : value,
+        job_id : value,
+        JobJobId: value,
         action_date : moment().format("YYYY-MM-DD HH:mm:ss")
       };
 
