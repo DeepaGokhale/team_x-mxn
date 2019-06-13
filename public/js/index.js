@@ -83,7 +83,7 @@ var refreshJobs = function () {
 var handleFormSubmit = function (event) {
   console.log("Reached in handleSubmit");
   event.preventDefault();
-  console.log("ReCHED IN SAVE ");
+  console.log("REACHED IN SAVE ");
 
   var closeBy = $actionDate.val().trim();
   var closeByConvert = moment(closeBy).format("dddd, MMMM Do YYYY");

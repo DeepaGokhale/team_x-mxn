@@ -114,6 +114,8 @@ module.exports = function (app) {
 
   //create new action
   app.post("/api/actions/", function (req, res) {
+    console.log(req.body);
+    
     db.Actions.create(req.body)
       .then(function (data) {
         res.json(data);
