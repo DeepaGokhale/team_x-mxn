@@ -24,7 +24,6 @@ $("#email-button").on("click", function() {
 $("#phone-button").on("click", function() {
     console.log("phone");
     console.log(moment().format());
-
     var value = $(this).val();
 
     var action = {
@@ -65,4 +64,17 @@ $("#interview-button").on("click", function() {
         console.log(data);
         window.location.reload();
       });
+});
+
+$(".jobActionDelete").on("click", function() {
+  // console.log($(this).attr('id'));
+  var job_actionId = $(this).attr('id');
+  console.log(job_actionId);
+  $.ajax({
+      type: "DELETE",
+      url: "/api/jobactionid/" + job_actionId   //"api/job/" + id,
+    }).then(function(data) {
+      console.log(data);
+      window.location.reload();
+    });
 });

@@ -122,6 +122,7 @@ module.exports = function (app) {
       });
   });
 
+  //action update
   app.put("/api/actions/:id", function (req, res) {
     db.Actions.update(
       req.body,
@@ -135,7 +136,9 @@ module.exports = function (app) {
       });
   });
 
-  app.delete("/api/actions/:id", function (req, res) {
+  //delete action for the job
+  //"/api/action/jobid/" + jobId + "/jobactionid/" + job_actionId
+  app.delete("/api/jobactionid/:id", function (req, res) {
     db.Actions.destroy({ where: { job_action_id: req.params.id } })
       .then(function (data) {
         res.json(data);
