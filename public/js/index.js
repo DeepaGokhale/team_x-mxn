@@ -141,12 +141,6 @@ var handleDeleteBtnClick = function (event) {
 $(document).ready(function () {
   $submitBtn.on("click", handleFormSubmit);
   $jobsList.on("click", ".delete", handleDeleteBtnClick);
-  $("#jobs_list > li").hover(function(){
-    // console.log($(this).children("a").attr("href"))
-    $(this).toggleClass("border border-info rounded")
-    $(this).click(function(){
-      location.href = $(this).children("a").attr("href");
-    });
-    
-  });
+
+  
 });
